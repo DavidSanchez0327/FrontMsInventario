@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8795f1f9-ea42-40bd-a2be-ae4e723bf054" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/inventario.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/entity/inventario.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/usecase/inventario.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1beb2212275a11e8a75cd36041b74f8d0339d1ff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/eef455804e9c8d3b37bc89b5d862f605690adb86" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f8957c915eee57c0a8382b5c6eea5beaab255456" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inventario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inventario.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +75,7 @@
       <workItem from="1568139162840" duration="2011000" />
       <workItem from="1568164563203" duration="8571000" />
       <workItem from="1568173440448" duration="775000" />
-      <workItem from="1568175086683" duration="8157000" />
+      <workItem from="1568175086683" duration="8632000" />
     </task>
     <servers />
   </component>

@@ -39,8 +39,7 @@ class App extends Component {
         this.refs.name.focus();
         fetch('http://localhost:8000/api_inventario/medicamentos')
             .then(res => res.json())
-            .then(data => this.setState({listaMed:data}))
-            .catch(console.log);
+            .then(data => this.setState({listaMed:data}));
     }
 
 
@@ -119,8 +118,6 @@ class App extends Component {
 
     render() {
         let datas = this.state.datas;
-        let listaMedicamentos = this.state.lista;
-        console.log(listaMedicamentos);
         return (
             <div className="App">
                 <h2>{this.state.title}</h2>

@@ -3,11 +3,13 @@ import React from 'react';
 const Inventario = ({inventario}) => {
     return (
         <div>
-            {inventario.map((invent) => (
-                <div>
-                    {invent.nombre}
-                </div>
-            ))}
+            <ul>
+                {inventario.map((invent) => (
+                    <li key={invent.codigo}>
+                        {invent.nombre}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
