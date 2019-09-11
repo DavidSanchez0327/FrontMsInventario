@@ -14,9 +14,3 @@ D
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
-C
-src/Client/index.js,1\b\1beb2212275a11e8a75cd36041b74f8d0339d1ff
-F
-src/Client/Cliente.css,f\8\f8957c915eee57c0a8382b5c6eea5beaab255456
-E
-src/Client/Cliente.js,e\e\eef455804e9c8d3b37bc89b5d862f605690adb86

@@ -1,46 +1,50 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import {InventarioService} from "./domain/usecase/inventario.service";
+import Inventario from "./components/inventario";
 
 class App extends Component {
 
+    inventarioService: InventarioService = new InventarioService();
+
 
     deletePost(ev) {
-        let el = ev.target
-        let id = el.dataset.id
-        let index = el.dataset.index
+        let el = ev.target;
+        let index = el.dataset.index;
 
-        fetch(`http://localhost:8000/medicamentos/eliminar/:codigo`, {
+        fetch(`http://localhost:8000/api_inventario/medicamentos/eliminar/${ev}`, {
             method: 'DELETE'
         })
             .catch(err => console.error(err))
             .then(() => {
-                let posts = this.state.posts
-                posts.splice(index, 1)
-                this.setState({ posts })
+                let posts = this.state.posts;
+                posts.splice(index, 1);
+                this.setState({posts});
             })
     }
 
 
-
-
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             title: 'Inventario',
             act: 0,
             index: '',
-            datas: []
+            datas: [],
+            listaMed: []
         }
     }
 
-    componentDidMount(){
-
+    componentDidMount() {
         this.refs.name.focus();
+        fetch('http://localhost:8000/api_inventario/medicamentos')
+            .then(res => res.json())
+            .then(data => this.setState({listaMed:data}))
+            .catch(console.log);
     }
 
 
-
-    fSubmit = (e) =>{
+    fSubmit = (e) => {
         e.preventDefault();
         console.log('try');
 
@@ -51,16 +55,16 @@ class App extends Component {
         let salePrice = this.refs.salePrice.value;
         let stock = this.refs.stock.value;
         let unity = this.refs.unity.value;
-        let image  = this.refs.image.value;
+        let image = this.refs.image.value;
         let provider = this.refs.provider.value;
         let category = this.refs.category.value;
 
-        if(this.state.act === 0){   //new
+        if (this.state.act === 0) {   //new
             let data = {
                 name, code, pricePurchase, salePrice, stock, unity, image, provider, category
-            }
+            };
             datas.push(data);
-        }else{                      //update
+        } else {                      //update
             let index = this.state.index;
             datas[index].name = name;
             datas[index].code = code;
@@ -84,7 +88,7 @@ class App extends Component {
 
     fRemove = (i) => {
         let datas = this.state.datas;
-        datas.splice(i,1);
+        datas.splice(i, 1);
         this.setState({
             datas: datas
         });
@@ -111,38 +115,42 @@ class App extends Component {
         });
 
         this.refs.name.focus();
-    }
+    };
 
     render() {
         let datas = this.state.datas;
-        let datas2 = this.state.datas;
-        let datas3 = this.state.datas;
+        let listaMedicamentos = this.state.lista;
+        console.log(listaMedicamentos);
         return (
             <div className="App">
                 <h2>{this.state.title}</h2>
                 <form ref="myForm" className="myForm">
-                    <input type="text" ref="name" placeholder="your name" className="formField" />
-                    <input type="text" ref="code" placeholder="your code" className="formField" />
-                    <input type="text" ref="pricePurchase" placeholder="your price Purchase" className="formField" />
-                    <input type="text" ref="salePrice" placeholder="  sale Price" className="formField" />
-                    <input type="text" ref="stock" placeholder="  stock" className="formField" />
-                    <input type="text" ref="unity" placeholder="  unity" className="formField" />
-                    <input type="text" ref="image" placeholder="  image" className="formField" />
-                    <input type="text" ref="provider" placeholder="  provider" className="formField" />
-                    <input type="text" ref="category" placeholder="  category" className="formField" />
-                    <button onClick={(e)=>this.fSubmit(e)} className="myButton">submit </button>
+                    <input type="text" ref="name" placeholder="your name" className="formField"/>
+                    <input type="text" ref="code" placeholder="your code" className="formField"/>
+                    <input type="text" ref="pricePurchase" placeholder="your price Purchase" className="formField"/>
+                    <input type="text" ref="salePrice" placeholder="  sale Price" className="formField"/>
+                    <input type="text" ref="stock" placeholder="  stock" className="formField"/>
+                    <input type="text" ref="unity" placeholder="  unity" className="formField"/>
+                    <input type="text" ref="image" placeholder="  image" className="formField"/>
+                    <input type="text" ref="provider" placeholder="  provider" className="formField"/>
+                    <input type="text" ref="category" placeholder="  category" className="formField"/>
+                    <button onClick={(e) => this.fSubmit(e)} className="myButton">submit</button>
                 </form>
                 <pre>
-          {datas.map((data, i) =>
-              <li key={i} className="myList">
-                  {i+1}. {data.name}, {data.code}, {data.pricePurchase}, {data.salePrice}
-                  ,{data.stock}, {data.unity}, {data.image}, {data.provider}, {data.category}
-                  <button onClick={()=>this.fRemove(i)} className="myListButton">remove </button>
-                  <button onClick={()=>this.fEdit(i)} className="myListButton">edit </button>
-              </li>
-          )}
-        </pre>
+                    {datas.map((data, i) => <li key={i} className="myList">
+                        {i + 1}. {data.name}, {data.code}, {data.pricePurchase}, {data.salePrice}
+                        ,{data.stock}, {data.unity}, {data.image}, {data.provider}, {data.category}
+                        <button onClick={() => this.fRemove(i)} className="myListButton">remove</button>
+                        <button onClick={() => this.fEdit(i)} className="myListButton">edit</button>
+                    </li>)}
+                </pre>
+                <div>
+                    Prueba React GetAll
+                    <Inventario inventario={this.state.listaMed}/>
+                </div>
             </div>
+
+
         );
     }
 }
