@@ -14,3 +14,9 @@ D
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+[
++src/domain/model/entity/inventario.model.js,e\c\eccfb60efe080558e94dcbf09f7ff0c1ec2aa065
+X
+(src/domain/usecase/inventario.service.js,8\c\8c73f3308967bd81c96bcd3109edec913f859399
+L
+src/components/inventario.js,c\7\c7b4be2fedac8a26baa2e2687cade9297f25ba22
