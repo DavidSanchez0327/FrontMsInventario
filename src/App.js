@@ -31,13 +31,14 @@ class App extends Component {
             act: 0,
             index: '',
             datas: [],
-            listaMed: []
+            listaMed: [],
+            listaCliente:[]
         }
     }
 
     componentDidMount() {
         this.refs.name.focus();
-        fetch('http://localhost:8000/api_inventario/medicamentos')
+        fetch('https://apigatewaytds.herokuapp.com/api_inventario/medicamentos')
             .then(res => res.json())
             .then(data => this.setState({listaMed:data}));
     }
@@ -129,10 +130,15 @@ class App extends Component {
                     <input type="text" ref="stock" placeholder="  stock" className="formField"/>
                     <input type="text" ref="unity" placeholder="  unity" className="formField"/>
                     <input type="text" ref="image" placeholder="  image" className="formField"/>
-                    <input type="text" ref="provider" placeholder="  provider" className="formField"/>
+                    <select className="myListProvider">
+                        <option value="grapefruit">DrogasW</option>
+                        <option value="lime">Roma</option>
+                        <option selected value="coconut">Ivanagro</option>
+                        <option value="mango">Sol Verde</option>
+                    </select>
                     <input type="text" ref="category" placeholder="  category" className="formField"/>
                     <button onClick={(e) => this.fSubmit(e)} className="myButton">submit</button>
-                </form>
+                    </form>
                 <pre>
                     {datas.map((data, i) => <li key={i} className="myList">
                         {i + 1}. {data.name}, {data.code}, {data.pricePurchase}, {data.salePrice}
@@ -144,6 +150,7 @@ class App extends Component {
                 <div>
                     Prueba React GetAll
                     <Inventario inventario={this.state.listaMed}/>
+
                 </div>
             </div>
 
