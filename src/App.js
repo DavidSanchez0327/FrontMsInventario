@@ -23,6 +23,35 @@ class App extends Component {
             })
     }
 
+    addPost(ev) {
+        let el = ev.target;
+        let index = el.dataset.index;
+
+        fetch(`http://localhost:8000/api_inventario/medicamentos/guardar`, {
+            method: 'POST'
+        })
+            .catch(err => console.error(err))
+            .then(() => {
+                let posts = this.state.posts;
+                posts.splice(index, 1);
+                this.setState({posts});
+            })
+    }
+
+    getProveedor(ev) {
+        let el = ev.target;
+        let index = el.dataset.index;
+
+        fetch(`http://localhost:8000/api_inventario/proveedores`, {
+            method: 'GET'
+        })
+            .catch(err => console.error(err))
+            .then(() => {
+                let posts = this.state.posts;
+                posts.splice(index, 1);
+                this.setState({posts});
+            })
+    }
 
     constructor(props) {
         super(props);
@@ -131,19 +160,19 @@ class App extends Component {
                     <input type="text" ref="unity" placeholder="  unity" className="formField"/>
                     <input type="text" ref="image" placeholder="  image" className="formField"/>
                     <select className="myListProvider">
-                        <option value="grapefruit">DrogasW</option>
-                        <option value="lime">Roma</option>
-                        <option selected value="coconut">Ivanagro</option>
-                        <option value="mango">Sol Verde</option>
+                        <option defaultValue="grapefruit">DrogasW</option>
+                        <option defaultValue="lime">Roma</option>
+                        <option  defaultValue="coconut">Ivanagro</option>
+                        <option defaultValue="mango">Sol Verde</option>
                     </select>
                     <input type="text" ref="category" placeholder="  category" className="formField"/>
-                    <button onClick={(e) => this.fSubmit(e)} className="myButton">submit</button>
+                    <button onClick={(e) => this.addPost(e)} className="myButton">submit</button>
                     </form>
                 <pre>
                     {datas.map((data, i) => <li key={i} className="myList">
                         {i + 1}. {data.name}, {data.code}, {data.pricePurchase}, {data.salePrice}
                         ,{data.stock}, {data.unity}, {data.image}, {data.provider}, {data.category}
-                        <button onClick={() => this.fRemove(i)} className="myListButton">remove</button>
+                        <button onClick={() => this.deletePost(i)} className="myListButton">remove</button>
                         <button onClick={() => this.fEdit(i)} className="myListButton">edit</button>
                     </li>)}
                 </pre>
