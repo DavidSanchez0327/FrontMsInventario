@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import {InventarioService} from "./domain/usecase/inventario.service";
 import Inventario from "./components/inventario";
+import ModalAgregar from "./components/modalInventario";
 
 class App extends Component {
-
-    inventarioService: InventarioService = new InventarioService();
-
 
     deletePost(ev) {
         let el = ev.target;
@@ -38,38 +35,27 @@ class App extends Component {
             })
     }
 
-    getProveedor(ev) {
-        let el = ev.target;
-        let index = el.dataset.index;
-
-        fetch(`http://localhost:8000/api_inventario/proveedores`, {
-            method: 'GET'
-        })
-            .catch(err => console.error(err))
-            .then(() => {
-                let posts = this.state.posts;
-                posts.splice(index, 1);
-                this.setState({posts});
-            })
-    }
-
     constructor(props) {
         super(props);
         this.state = {
             title: 'Inventario',
-            act: 0,
-            index: '',
-            datas: [],
             listaMed: [],
-            listaCliente:[]
+            listaCliente: [],
+            listaProv: [],
+            listaCat: []
         }
     }
 
     componentDidMount() {
-        this.refs.name.focus();
+        fetch('https://apigatewaytds.herokuapp.com/api_inventario/proveedores')
+            .then(res => res.json())
+            .then(data => this.setState({listaProv: data}));
         fetch('https://apigatewaytds.herokuapp.com/api_inventario/medicamentos')
             .then(res => res.json())
-            .then(data => this.setState({listaMed:data}));
+            .then(data => this.setState({listaMed: data}));
+        fetch('https://apigatewaytds.herokuapp.com/api_inventario/agregados/categorias')
+            .then(res => res.json())
+            .then(data => this.setState({listaCat: data}));
     }
 
 
@@ -147,37 +133,13 @@ class App extends Component {
     };
 
     render() {
-        let datas = this.state.datas;
+
         return (
             <div className="App">
                 <h2>{this.state.title}</h2>
-                <form ref="myForm" className="myForm">
-                    <input type="text" ref="name" placeholder="your name" className="formField"/>
-                    <input type="text" ref="code" placeholder="your code" className="formField"/>
-                    <input type="text" ref="pricePurchase" placeholder="your price Purchase" className="formField"/>
-                    <input type="text" ref="salePrice" placeholder="  sale Price" className="formField"/>
-                    <input type="text" ref="stock" placeholder="  stock" className="formField"/>
-                    <input type="text" ref="unity" placeholder="  unity" className="formField"/>
-                    <input type="text" ref="image" placeholder="  image" className="formField"/>
-                    <select className="myListProvider">
-                        <option defaultValue="grapefruit">DrogasW</option>
-                        <option defaultValue="lime">Roma</option>
-                        <option  defaultValue="coconut">Ivanagro</option>
-                        <option defaultValue="mango">Sol Verde</option>
-                    </select>
-                    <input type="text" ref="category" placeholder="  category" className="formField"/>
-                    <button onClick={(e) => this.addPost(e)} className="myButton">submit</button>
-                    </form>
-                <pre>
-                    {datas.map((data, i) => <li key={i} className="myList">
-                        {i + 1}. {data.name}, {data.code}, {data.pricePurchase}, {data.salePrice}
-                        ,{data.stock}, {data.unity}, {data.image}, {data.provider}, {data.category}
-                        <button onClick={() => this.deletePost(i)} className="myListButton">remove</button>
-                        <button onClick={() => this.fEdit(i)} className="myListButton">edit</button>
-                    </li>)}
-                </pre>
+                <ModalAgregar providers={this.state.listaProv} categories={this.state.listaCat}/>
                 <div>
-                    Prueba React GetAll
+                    Medicamentos
                     <Inventario inventario={this.state.listaMed}/>
 
                 </div>

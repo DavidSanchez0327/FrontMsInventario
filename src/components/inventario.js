@@ -9,38 +9,34 @@ import Paper from '@material-ui/core/Paper';
 const Inventario = ({inventario}) => {
     return (
         <div>
-            <ul>
-
-                    <Paper >
-                        <Table >
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="right">Codigo</TableCell>
-                                    <TableCell align="right">nombre</TableCell>
-                                    <TableCell align="right">precio Compra</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {inventario.map(invent => (
-                                    <TableRow key={invent.codigo}>
-                                        <TableCell  align="right" component="th" scope="row">
-                                            {invent.codigo}
-                                        </TableCell>
-                                        <TableCell align="right">{invent.nombre}</TableCell>
-                                        <TableCell align="right">{invent.precioCompra}</TableCell>
-
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Paper>
-
-
-
-
-            </ul>
+            <Paper>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="right">Código</TableCell>
+                            <TableCell align="right">Nombre</TableCell>
+                            <TableCell align="right">Precio Compra</TableCell>
+                            <TableCell align="right">Proveedor</TableCell>
+                            <TableCell align="right">Categoría</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {inventario.map(invent => (
+                            <TableRow key={invent.codigo}>
+                                <TableCell align="right" component="th" scope="row">
+                                    {invent.codigo}
+                                </TableCell>
+                                <TableCell align="right">{invent.nombre}</TableCell>
+                                <TableCell align="right">{invent.precioCompra}</TableCell>
+                                <TableCell align="right">{invent.proveedor.nombre}</TableCell>
+                                <TableCell align="right">{invent.categoria.nombre}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Paper>
         </div>
-    )
-}
+    );
+};
 
 export default Inventario
