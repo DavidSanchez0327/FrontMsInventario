@@ -13,7 +13,9 @@
             </thead>
             <tbody>
             <tr v-for="medicamento in medicamentos">
-                <td>{{medicamento.imagen}}</td>
+                <td>
+                    <img :src=medicamento.imagen rounded="circle" alt="image" class="img-responsive" height="70" width="90" />
+                </td>
                 <td>{{medicamento.codigo}}</td>
                 <td>{{medicamento.nombre}}</td>
                 <td>${{medicamento.precioVenta}}</td>
