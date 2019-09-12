@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/frontinventarycruzpurpura.iml" filepath="$PROJECT_DIR$/.idea/frontinventarycruzpurpura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Vue.js-Client.iml" filepath="$PROJECT_DIR$/.idea/Vue.js-Client.iml" />
     </modules>
   </component>
 </project>
