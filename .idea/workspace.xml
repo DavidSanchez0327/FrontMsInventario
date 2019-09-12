@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8795f1f9-ea42-40bd-a2be-ae4e723bf054" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/model/entity/categoria.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/entity/puntoDistribucion.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modalInventario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modalInventario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/entity/inventario.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/entity/medicamento.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/entity/medicamentovendido.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/entity/medicamentovendido.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -56,16 +52,28 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf2429bb-d161-4eba-802c-7acb1dcdb648" name="Default Changelist" comment="" />
+      <changelist id="8795f1f9-ea42-40bd-a2be-ae4e723bf054" name="Default Changelist" comment="" />
       <created>1568255461644</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568255461644</updated>
       <workItem from="1568255462871" duration="9066000" />
+      <workItem from="1568324245606" duration="347000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
