@@ -56,32 +56,25 @@
                 </select>
             </div>
 
-            <button v-on:click="saveMedicamento" class="btn btn-success">Guardar</button>
+            <button v-on:click="actuMedicamento" class="btn btn-success">Guardar</button>
         </div>
 
         <div v-else>
-            <h4>Medicamento guardado!</h4>
-            <button class="btn btn-success" v-on:click="newMedicamento">Añadir otro</button>
+            <h4>Medicamento actualizado!</h4>
         </div>
     </div>
 </template>
-
 <script>
     import http from "../http-common";
 
+    import EventBus from './bus';
+
     export default {
-        name: "add-medicamento",
+        name: "actualizar-medicamento",
         data() {
+
             return {
-                medicamento: {
-                    codigo: "",
-                    nombre: "",
-                    precioCompra: 0,
-                    precioVenta: 0,
-                    existencias: 0,
-                    unidad: "",
-                    imagen: "",
-                },
+                medicamento: {},
 
                 submitted: false,
                 proveedores: [],
@@ -90,6 +83,7 @@
                 catSelect: "",
                 provSelect: "",
                 ptDistSelect: "",
+                medicAtualizar: {},
             };
         },
         methods: {
@@ -121,7 +115,7 @@
                         console.log(e);
                     })
             },
-            saveMedicamento() {
+            actuMedicamento() {
                 var data = {
                     codigo: this.medicamento.codigo,
                     nombre: this.medicamento.nombre,
@@ -135,7 +129,7 @@
                     puntoDistribucion: this.puntosDistribucion.find(ptDst => this.ptDistSelect === ptDst.nombre)
                 };
                 http
-                    .post("/medicamentos/guardar", data)
+                    .post("/medicamentos/actualizar", data)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -145,13 +139,17 @@
                 this.submitted = true;
             },
 
-            newMedicamento() {
-                this.submitted = false;
-                this.medicamento = {};
+            llenar() {
+                EventBus.$on('medicamento', (item) => {
+                    console.log("Para actualizar");
+                    this.medicamento = item;
+                    console.log("medi: "+this.medicamento.nombre);
+                });
             }
-            /* eslint-disable no-console */
+
         },
         mounted() {
+            this.llenar();
             this.getProveedores();
             this.getCategorias();
             this.getPuntosDistribucion();
