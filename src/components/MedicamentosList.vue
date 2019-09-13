@@ -1,15 +1,17 @@
 <template>
-    <div>
-
-
-        <table id="firstTable">
-            <thead>
-            <tr>
+    <div class="container row-fluid">
+        <div v-if="!submitted">
+        <table id="firstTable" class="table table-striped">
+            <thead id="colms">
+            <tr class="accordion-toggle">
                 <th>Imagen</th>
                 <th>Codigo</th>
                 <th>Nombre</th>
-                <th>Precio</th>
-                <th>Acción</th>
+                <th>PrecioCompra</th>
+                <th>PrecioVenta</th>
+                <th>Proveedor</th>
+                <th>Categoria</th>
+                <th>Opciones</th>
             </tr>
             </thead>
             <tbody>
@@ -19,15 +21,24 @@
                 </td>
                 <td>{{medicamento.codigo}}</td>
                 <td>{{medicamento.nombre}}</td>
+                <td>${{medicamento.precioCompra}}</td>
                 <td>${{medicamento.precioVenta}}</td>
+                <td>{{medicamento.proveedor.nombre}}</td>
+                <td>{{medicamento.categoria.nombre}}</td>
                 <td>
-                    <button v-if="loged" v-on:click="editar(medicamento)" class="btn btn-success mr-2">Editar</button>
+                    <button v-if="loged" name="edi" v-on:click="editar(medicamento)" disabled class="btn btn-success mr-2">Editar</button>
                     <button v-if="loged" v-on:click="eliminar(medicamento.codigo)" class="btn btn-danger">Eliminar</button>
                 </td>
 
             </tr>
             </tbody>
         </table>
+        </div>
+        <div v-else class="text-center">
+            <h4 class="mb-3">Medicamento eliminado!</h4>
+            <button class="btn btn-success" v-on:click="volver">Volver</button>
+        </div>
+
     </div>
 
 </template>
@@ -48,7 +59,8 @@
         data() {
             return {
                 medicamentos: [],
-                loged: false
+                loged: false,
+                submitted: false,
             };
         },
         components: {
@@ -75,18 +87,24 @@
                 this.$router.push("/medicamentos/actualizar");
             },
 
-            eliminar: (codigo) => {
+            eliminar(codigo){
                 console.log(codigo);
                 http
                     .post('/medicamentos/eliminar/'+codigo)
                     .then(res => {
-                        alert(res.data);
+                        this.submitted = true;
                     }).catch(err => {
                         alert("No eliminado "+err);
+
                 });
 
             },
             refreshList() {
+                this.getMedicamentos();
+            },
+
+            volver() {
+                this.submitted = false;
                 this.getMedicamentos();
             }
             /* eslint-enable no-console */
@@ -96,18 +114,21 @@
             let usuario = localStorage.getItem("usuario");
             if(usuario !== null){
                 this.loged = true;
-                console.log(this.loged);
             }
 
             this.getMedicamentos();
-        }
+        },
+
     };
 </script>
 
 <style>
-    .list {
-        text-align: left;
-        max-width: 450px;
+    #firstTable {
+        text-align: center;
+        max-width: 100%;
         margin: auto;
+    }
+    #firstTable #colms{
+        padding-left: 440px;
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="submitform">
         <div v-if="!submitted">
             <div class="form-group">
-                <input type="text" placeholder="Nombre" class="form-control" id="nombre" required v-model="medicamento.nombre" name="nombre">
+                <input type="text" placeholder="Nombre" class="form-control" id="nombre" v-model="medicamento.nombre" name="nombre" :required="!medicamento.nombre">
             </div>
 
             <div class="form-group">
@@ -59,8 +59,8 @@
             <button v-on:click="saveMedicamento" class="btn btn-success">Guardar</button>
         </div>
 
-        <div v-else>
-            <h4>Medicamento guardado!</h4>
+        <div v-else class="text-center">
+            <h4 class="mb-3">Medicamento guardado!</h4>
             <button class="btn btn-success" v-on:click="newMedicamento">Añadir otro</button>
         </div>
     </div>
@@ -134,6 +134,7 @@
                     categoria: this.categorias.find(cat => this.catSelect === cat.nombre),
                     puntoDistribucion: this.puntosDistribucion.find(ptDst => this.ptDistSelect === ptDst.nombre)
                 };
+
                 http
                     .post("/medicamentos/guardar", data)
                     .then(response => {
