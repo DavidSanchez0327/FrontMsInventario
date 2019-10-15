@@ -18,9 +18,9 @@ import Vue from 'vue'
 import SideBar from './components/shared/SideBar'
 import NavBar from './components/shared/NavBar'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faCoffee} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 library.add(faCoffee)
 
@@ -37,14 +37,16 @@ export default {
 </script>
 
 <style>
-  #app{
+  #app {
     font-family: Arial;
   }
-  #vistas{
+
+  #vistas {
     background-color: #edf1f5;
   }
-  #menu{
+
+  #menu {
     background-color: #fff;
     box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
   }
-</style>
+  </style>

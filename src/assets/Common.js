@@ -3,7 +3,7 @@ import axios from 'axios'
 const token = localStorage.usertoken
 
 export default axios.create({
-  baseURL: '  http://localhost:3000',
+  baseURL: 'https://gateway19.herokuapp.com',
   headers: {
     'Content-type': 'application/json',
     'Authorization': 'Bearer ' + token
