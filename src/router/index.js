@@ -9,6 +9,7 @@ import Proveedores from '@/components/proveedor/Proveedores'
 import AddProveedor from '@/components/proveedor/AddProveedor'
 import Login from '@/components/usuario/Login'
 import Registro from '@/components/usuario/Registro'
+import Pedidos from '@/components/pedido/Pedidos'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/add_proveedor',
       name: 'AddProveedor',
       component: AddProveedor
+    },
+    {
+      path: '/pedidos',
+      name: 'Pedidos',
+      component: Pedidos
     },
     {
       path: '/login',

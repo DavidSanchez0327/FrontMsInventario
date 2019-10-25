@@ -15,6 +15,9 @@
         <router-link class="nav-link" to="/medicamentos">Medicamentos</router-link>
       </li>
       <li class="nav-item">
+        <router-link class="nav-link" to="/pedidos">Pedidos</router-link>
+      </li>
+      <li class="nav-item">
         <router-link class="nav-link" to="/centros">Centros de distribución</router-link>
       </li>
       <li class="nav-item">
