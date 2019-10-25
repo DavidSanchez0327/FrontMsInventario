@@ -13,11 +13,11 @@ Vue.use(VueSweetalert2)
 
 Vue.config.productionTip = false
 
-Vue.filter('formatDate', function(value) {
+Vue.filter('formatDate', function (value) {
   if (value) {
     return moment(String(value)).format('DD/MM/YYYY hh:mm')
   }
-});
+})
 
 /* eslint-disable no-new */
 new Vue({
