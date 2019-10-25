@@ -12,6 +12,7 @@
             <th scope="col">Cantidad</th>
             <th scope="col">Precio unidad</th>
             <th scope="col">Fecha solicitud</th>
+            <th scope="col">Fecha aprobación</th>
           </tr>
           </thead>
           <tbody>
@@ -19,7 +20,8 @@
             <td>{{itemPedido.name}}</td>
             <td>{{itemPedido.quantity}}</td>
             <td>${{itemPedido.price}}</td>
-            <td>{{pedido.date | formatDate}}</td>
+            <td>{{pedido.dateSolicitud | formatDate}}</td>
+            <td>{{pedido.dateAprobacion | formatDate }} </td>
           </tr>
           </tbody>
         </table>
